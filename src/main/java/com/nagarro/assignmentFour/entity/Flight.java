@@ -1,6 +1,9 @@
 package com.nagarro.assignmentFour.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 @Entity
@@ -8,7 +11,7 @@ import java.util.Date;
 public class Flight {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
 //    @Column(name="flight_no")
@@ -21,6 +24,8 @@ public class Flight {
     private String arr_loc;
 
 //    @Column(name="valid_till")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    @Temporal(TemporalType.DATE)
     private Date valid_till;
 
 //    @Column(name="flight_time")
@@ -37,12 +42,11 @@ public class Flight {
 
 //    @Column(name="flight_class")
     private String flight_class;
-    @ManyToOne
-	private Airline airline ;
+  
 
 	public Flight(String flightNo, String depLoc, String arrLoc, int fare,
 			Date validTill, int flightTime, Double flightDuration,
-			boolean seatAvailability, String flightClass,Airline airline ) {
+			boolean seatAvailability, String flightClass) {
 		super();
 		this.flight_no = flightNo;
 		this.dep_loc = depLoc;
@@ -55,10 +59,13 @@ public class Flight {
 		if (flightClass.equalsIgnoreCase("EB"))
 			fare = 140 * fare / 100;
 		this.fare = fare;
-		this.airline =airline ;
 	}
     
-    public int getId() {
+    public Flight() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getId() {
         return id;
     }
 
@@ -66,13 +73,6 @@ public class Flight {
         this.id = id;
     }
 
-    public Airline getAirline() {
-		return airline;
-	}
-
-	public void setAirline(Airline airline) {
-		this.airline = airline;
-	}
 
 	public void setSeat_availability(boolean seat_availability) {
 		this.seat_availability = seat_availability;
@@ -153,3 +153,4 @@ public class Flight {
     }
 
 }
+

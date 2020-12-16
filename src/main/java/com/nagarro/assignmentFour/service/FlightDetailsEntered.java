@@ -9,12 +9,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import com.nagarro.assignmentFour.AppContextUtil.AppContextUtil;
 import com.nagarro.assignmentFour.comparator.FlightDurationComparator;
 import com.nagarro.assignmentFour.comparator.FlightPriceComparator;
-import com.nagarro.assignmentFour.dao.FlightDao;
 import com.nagarro.assignmentFour.entity.Flight;
 
 public class FlightDetailsEntered {
@@ -56,12 +52,10 @@ public class FlightDetailsEntered {
 	}
 	
 	public List<Flight> getListOfMatchingFlights(){
-		FlightDao flightDao = (FlightDao) AppContextUtil.context.getBean("flightDao");
-		List<Flight> allFlights =  flightDao.getFlights();
 		ArrayList<Flight> matchingFlights = new ArrayList<Flight>();
 		
 		
-		for (Flight flight : allFlights) {
+		for (Flight flight : FlightService.allFlights) {
 			if (flight.getDep_loc().equalsIgnoreCase(getDepLoc())
 					&& flight.getArr_loc().equalsIgnoreCase(getArrLoc())
 					&& flight.getFlight_class().equalsIgnoreCase(getFlightClass())
