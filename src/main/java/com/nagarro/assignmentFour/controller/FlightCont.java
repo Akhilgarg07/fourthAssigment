@@ -37,6 +37,9 @@ public class FlightCont {
 				return modelAndView ;
 			}
 			List<Flight> listOfMatchingFlights= flightDetails.getListOfMatchingFlights();
+			for(Flight f:listOfMatchingFlights) {
+				System.out.println(f.getValid_till());
+			}
 			modelAndView = new ModelAndView("flightList");
 			modelAndView.addObject("list", listOfMatchingFlights);
 			return modelAndView ;

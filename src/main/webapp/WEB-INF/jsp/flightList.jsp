@@ -1,5 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html >
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Matching Flights</title>
@@ -36,8 +40,10 @@ p{
 </head>
 <body>
 
+
 <table>
 <tr>
+<th>S.no.</th>
 <th>flight No. </th>
 <th>Valid till</th>
 <th>Departure Time</th>
@@ -45,14 +51,16 @@ p{
 <th>fare</th>
 </tr>
 
-<tr th:each="listValue : ${list}">
-<td th:text="${listValue.flight_no}"> </td>
-<td th:text="${listValue.valid_till}"></td>
-<td th:text= "${listValue.flight_time}"> </td>
-<td th:text= " ${listValue.flight_dur}"> </td>
-<td th:text= " ${listValue.fare}"> </td>
-</tr>
+<c:forEach  var="listValue" items="${list}"  varStatus="status">
+<tr>
 
+<td>  ${listValue.flight_no} </td>
+<td> <fmt:formatDate value="${listValue.valid_till}" type="date" dateStyle="long" /> </td>
+<td>  ${listValue.flight_time} </td>
+<td>  ${listValue.flight_dur} </td>
+<td>  ${listValue.fare} </td>
+</tr>
+</c:forEach>
 
 </table>
 
