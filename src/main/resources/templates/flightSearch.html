@@ -3,76 +3,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Flight Search</title>
-<style>
-fieldset {
-	margin-top:30%;
-	border-radius: 4px;
-}
-
-#nameUser{
-	margin-left:40%;
-}
-
-#flight {
-	margin-top:20%;
-	width: 350px;
-	margin: auto;
-	position: fixed;
-	left: calc(50% - 175px);
-}
-
-form input {
-	float: right;
-	margin-right: 20px;
-	border: 0.5px solid black;
-}
-
-#para {
-	margin-top:20%; 
-	font-size: small;
-	float: right;
-	color: blue;
-}
-
-span {
-	font-size: small;
-	color: red;
-}
-</style>
+<link href="@{/css/flightSearch.css}" rel="stylesheet" />
 </head>
 <body>
-<div>
-	<div id="nameUser">
-        <form th:action="@{/logout}" method="post">
-            <p>
-                <h1>Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b><h1>
-            </p>
-            <input type="submit" value="Sign Out" />
-        </form>
-    </div>
-    <br><br>
-	<div id="flight">
-		<fieldset>
-			<legend>Flight Search Form</legend>
-			<form th:action="@{/flightSearch}" method="post" >
-				<label>Departure Location <input name="depLoc" required></label>
-				<br>
-				<br> <label>Arrival Location <input name="arrLoc"
-					required></label> <br>
-				<br> <label>Flight Date <input name="flightDate"
-					type="date" required> <br>
-				<br> <label>Flight Class <input name="flightClass"
-						required></label> <br>
-				<br> Output Preference :<br>
-				<br> <label><input name="outputPreference" type="radio"
-						value="1" required style="margin: 0px; float: none;"> By
-						Price </label> <label><input name="outputPreference" type="radio"
-						value="2" required style="margin: 0px; float: none;"> By
-						Duration </label> <br>
-				<br> <input type="submit" value="Search"><br>
+	<div>
+		<div id="nameUser">
+			<form th:action="@{/logout}" method="post">
+				<p>
+				<h1>
+					Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+					<h1>
+						</p>
+						<input type="submit" value="Sign Out" />
 			</form>
-		</fieldset>
+		</div>
+		<br>
+		<br>
+		<div id="flight">
+			<fieldset>
+				<legend>Flight Search Form</legend>
+				<form th:action="@{/flightSearch}" method="post">
+					<label>Departure Location <input name="depLoc" required></label>
+					<br> <br> <label>Arrival Location <input
+						name="arrLoc" required></label> <br> <br> <label>Flight
+						Date <input name="flightDate" type="date" required> <br>
+						<br> <label>Flight Class <input name="flightClass"
+							required></label> <br> <br> Output Preference :<br>
+						<br> <label><input name="outputPreference"
+							type="radio" value="1" required style="margin: 0px; float: none;">
+							By Price </label> <label><input name="outputPreference"
+							type="radio" value="2" required style="margin: 0px; float: none;">
+							By Duration </label> <br> <br> <input type="submit"
+						value="Search"><br>
+				</form>
+			</fieldset>
+		</div>
 	</div>
-</div>
 </body>
 </html>

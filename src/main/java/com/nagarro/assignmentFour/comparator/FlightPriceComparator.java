@@ -4,10 +4,9 @@ import java.util.Comparator;
 
 import com.nagarro.assignmentFour.entity.Flight;
 
-public class FlightPriceComparator implements Comparator<Flight>
-{
+public class FlightPriceComparator implements Comparator<Flight> {
 	@Override
-	public int compare(Flight arg0, Flight arg1) {
-		return arg0.getFare()-arg1.getFare();
+	public int compare(Flight flight1, Flight flight2) {
+		return flight1.getFare() - flight2.getFare();
 	}
 }

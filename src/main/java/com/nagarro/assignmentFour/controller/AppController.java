@@ -7,51 +7,45 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.nagarro.assignmentFour.constants.Constants;
 import com.nagarro.assignmentFour.entity.User;
-import com.nagarro.assignmentFour.repository.UserRepository;
 import com.nagarro.assignmentFour.service.FlightService;
- 
-@Controller 
+import com.nagarro.assignmentFour.service.UserRegisterService;
+
+@Controller
 public class AppController {
 
 	@Autowired
-    private UserRepository userRepo;
-	
+	private UserRegisterService userRegister;;
+
 	@Autowired
-	private FlightService fs;
-     
+	private FlightService flightService;
+
 	@GetMapping("")
-    public String viewHome() 
-	{
-		return "index";
+	public String viewHomePage() {
+		return Constants.INDEX;
 	}
-	
-    @GetMapping("/home")
-    public String viewHomePage() {
-        return "index";
-    }
-    
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-    	model.addAttribute("user",new User());
-    	return  "signup";
-    }
-    
-    @PostMapping("/process_register")
-    public String processRegister(User user) {
-    	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    	String encodedPassword = passwordEncoder.encode(user.getPassword());
-    	user.setPassword(encodedPassword);
-    	userRepo.save(user);
-    	
-    	return "register_success";
-    }
-    
-    @GetMapping("/flightSearch")
-    public String viewFlightSearch() {
-        fs.saveFlightData();
-        return "flightSearch";
-    }
-    
-    
+
+	@GetMapping("/register")
+	public String showRegistrationForm(Model model) {
+		model.addAttribute("user", new User());
+		return Constants.SIGNUP;
+	}
+
+	@PostMapping("/register")
+	public String processRegister(User user) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
+		userRegister.userRepoSave(user);
+
+		return Constants.REGISTERSUCCESS;
+	}
+
+	@GetMapping("/flightSearch")
+	public String viewFlightSearch() {
+		flightService.saveFlightData();
+		return Constants.FLIGHTSEARCH;
+	}
+
 }

@@ -1,12 +1,11 @@
-package com.nagarro.assignmentFour.dto;
+package com.nagarro.assignmentFour.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.nagarro.assignmentFour.entity.Flight;
 
-
 @Repository
-public interface FlightDTO extends CrudRepository<Flight,Integer>{
+public interface FlightRepo extends CrudRepository<Flight, Integer> {
 
 }
