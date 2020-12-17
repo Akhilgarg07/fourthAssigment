@@ -5,10 +5,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
-
 import com.nagarro.assignmentFour.comparator.FlightDurationComparator;
 import com.nagarro.assignmentFour.comparator.FlightPriceComparator;
 import com.nagarro.assignmentFour.entity.Flight;

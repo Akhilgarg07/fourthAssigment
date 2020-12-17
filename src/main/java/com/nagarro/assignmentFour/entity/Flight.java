@@ -14,33 +14,24 @@ public class Flight {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
-//    @Column(name="flight_no")
     private  String flight_no;
 
-//    @Column(name="dep_loc")
     private String dep_loc;
 
-//    @Column(name="arr_loc")
     private String arr_loc;
 
-//    @Column(name="valid_till")
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
     @Temporal(TemporalType.DATE)
     private Date valid_till;
 
-//    @Column(name="flight_time")
     private int flight_time;
 
-//    @Column(name="flight_dur")
     private double flight_dur;
 
-//    @Column(name="fare")
     private int fare;
 
-//    @Column(name="seat_availability")
     private boolean seat_availability;
 
-//    @Column(name="flight_class")
     private String flight_class;
   
 
@@ -62,7 +53,6 @@ public class Flight {
 	}
     
     public Flight() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {
@@ -139,10 +129,6 @@ public class Flight {
     public boolean isSeat_availability() {
         return seat_availability;
     }
-//
-//    public void setSeat_availability(boolean seat_availability) {
-//        this.seat_availability = seat_availability;
-//    }
 
     public String getFlight_class() {
         return flight_class;
