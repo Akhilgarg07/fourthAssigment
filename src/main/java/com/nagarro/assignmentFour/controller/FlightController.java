@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.nagarro.assignmentFour.entity.FinalFlightResult;
+import com.nagarro.assignmentFour.entity.FlightInputDetails;
+import com.nagarro.assignmentFour.service.FlightService;
 import com.nagarro.assignmentFour.entity.Flight;
 
 @Controller
@@ -28,7 +29,7 @@ public class FlightController {
 	}
 
 	@PostMapping("/flightSearch")
-	public ModelAndView flightSearch(@Valid @ModelAttribute("flightDetails") FinalFlightResult flightDetails,
+	public ModelAndView flightSearch(@Valid @ModelAttribute("flightDetails") FlightInputDetails flightDetails,
 			BindingResult result) {
 
 		ModelAndView modelAndView = new ModelAndView("flightSearch");

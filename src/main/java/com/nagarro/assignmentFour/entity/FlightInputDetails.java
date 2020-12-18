@@ -9,7 +9,7 @@ import com.nagarro.assignmentFour.comparator.FlightDurationComparator;
 import com.nagarro.assignmentFour.comparator.FlightPriceComparator;
 import com.nagarro.assignmentFour.service.FlightService;
 
-public class FinalFlightResult {
+public class FlightInputDetails {
 	private String depLoc;
 	private String arrLoc;
 	private Date flightDate;

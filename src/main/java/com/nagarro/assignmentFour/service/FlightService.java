@@ -6,13 +6,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nagarro.assignmentFour.comparator.FlightDurationComparator;
+import com.nagarro.assignmentFour.comparator.FlightPriceComparator;
 import com.nagarro.assignmentFour.constants.Constants;
 import com.nagarro.assignmentFour.entity.Flight;
+import com.nagarro.assignmentFour.entity.FlightInputDetails;
 import com.nagarro.assignmentFour.repository.FlightRepo;
 
 @Service
@@ -61,4 +65,9 @@ public class FlightService {
 
 		}
 	}
+	
+	public List<Flight> flightList(){
+		return allFlights;
+	}
+	
 }

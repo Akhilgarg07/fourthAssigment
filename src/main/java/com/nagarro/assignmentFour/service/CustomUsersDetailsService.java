@@ -2,19 +2,27 @@ package com.nagarro.assignmentFour.service;
 
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.nagarro.assignmentFour.entity.User;
+import com.nagarro.assignmentFour.repository.UserRepository;
 
-public class UsersDetails implements UserDetails {
+public class CustomUsersDetailsService implements UserDetails, UserDetailsService {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Autowired
+	private UserRepository userRepo;
+
 	private User user;
 
-	public UsersDetails(User user) {
+	public CustomUsersDetailsService(User user) {
 		this.user = user;
 	}
 
@@ -55,5 +63,15 @@ public class UsersDetails implements UserDetails {
 
 	public String getFullName() {
 		return user.getFirstName() + " " + user.getLastName();
+	}
+	
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepo.findByEmail(username);
+		if (user == null) {
+			throw new UsernameNotFoundException("User not found");
+		}
+		return new CustomUsersDetailsService(user);
 	}
 }
