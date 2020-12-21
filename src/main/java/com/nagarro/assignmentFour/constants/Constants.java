@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 
 public class Constants {
 
-	public final static String DIRECTORY = "C:\\Users\\Akhil\\Desktop\\readCSV\\readCSV\\CSV";
+	public final static String DIRECTORY = "C:\\Users\\Akhil\\Desktop\\assignmentFour\\CSV";
 	public static final SimpleDateFormat DATEFORMAT = new SimpleDateFormat("dd-MM-yyyy");
 	public final static String INDEX = "index";
 	public final static String SIGNUP = "signup";

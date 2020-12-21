@@ -55,22 +55,4 @@ public class FlightInputDetails {
 	public void setOutputPreference(int outputPreference) {
 		this.outputPreference = outputPreference;
 	}
-
-	public List<Flight> getListOfMatchingFlights() {
-		ArrayList<Flight> matchingFlights = new ArrayList<Flight>();
-
-		for (Flight flight : FlightService.allFlights) {
-			if (flight.getDep_loc().equalsIgnoreCase(getDepLoc()) && flight.getArr_loc().equalsIgnoreCase(getArrLoc())
-					&& flight.getFlight_class().equalsIgnoreCase(getFlightClass())
-					&& (getFlightDate().compareTo(flight.getValid_till()) <= 0) && flight.isSeat_availability())
-				matchingFlights.add(flight);
-		}
-
-		if (getOutputPreference() == 1)
-			Collections.sort(matchingFlights, new FlightPriceComparator());
-		else
-			Collections.sort(matchingFlights, new FlightDurationComparator());
-
-		return matchingFlights;
-	}
 }
